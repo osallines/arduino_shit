@@ -1,0 +1,176 @@
+int traffic1 [] = {2,3,4}; //red,yellow,green
+bool t1 [] = {true,false,false};
+// top right
+int traffic2 [] = {5,6,7};
+bool t2 [] = {true,false,false};
+// bottom left
+int traffic3 [] = {8,9,10};
+bool t3 [] = {true,false,false};
+// bottom right
+int traffic4 [] = {11,12,13};
+bool t4 [] = {true,false,false};
+bool emergency_state = false;
+void setup()
+{
+  digitalWrite(traffic1[0],HIGH);
+  digitalWrite(traffic2[0],HIGH);
+  digitalWrite(traffic3[0],HIGH);
+  digitalWrite(traffic4[0],HIGH);
+  Serial.begin(9600);
+}
+void loop()
+{
+ 
+ {
+  for (int i = 0; i <= 250;i++){
+t1[0] = false;
+t1[1] = false;
+t1[2] = true;
+digitalWrite(traffic1[0], LOW );
+digitalWrite(traffic1[1],LOW);
+digitalWrite(traffic1[2],HIGH);
+    Serial.println("t1g");
+  if (Serial.read() == 'r')
+    {goto Thecode;}
+  }
+
+
+ for (int i = 0; i <= 150;i++){
+
+t1[0] = false;
+t1[1] = true;
+t1[2] = false;
+digitalWrite(traffic1[0], LOW );
+digitalWrite(traffic1[1],HIGH);
+digitalWrite(traffic1[2],LOW);
+Serial.println("t1y");
+    if (Serial.read() == 'r')
+ {goto Thecode;}
+ }
+
+
+t1[0] = true;
+t1[1] = false;
+t1[2] = false;
+digitalWrite(traffic1[0], HIGH );
+digitalWrite(traffic1[1],LOW);
+digitalWrite(traffic1[2],LOW);
+   Serial.println("t1r");
+  if (Serial.read() == 'r')
+ {goto Thecode;}}
+
+ for (int i = 0; i <= 250;i++){
+t2[0] = false;
+t2[1] = false;
+t2[2] = true;
+digitalWrite(traffic2[0], LOW );
+digitalWrite(traffic2[1],LOW);
+digitalWrite(traffic2[2],HIGH);
+   Serial.println("t2g");
+ if (Serial.read() == 'r')
+ {goto Thecode;}
+ }
+
+ for (int i = 0; i <= 150;i++){
+t2[0] = false;
+t2[1] = true;
+t2[2] = false;
+digitalWrite(traffic2[0], LOW );
+digitalWrite(traffic2[1],HIGH);
+digitalWrite(traffic2[2],LOW);
+   Serial.println("t2y");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+}
+
+
+t2[0] = true;
+t2[1] = false;
+t2[2] = false;
+digitalWrite(traffic2[0], HIGH );
+digitalWrite(traffic2[1],LOW);
+digitalWrite(traffic2[2],LOW);
+   Serial.println("t2r");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+
+ for (int i = 0; i <= 250;i++){
+t3[0] = false;
+t3[1] = false;
+t3[2] = true;
+digitalWrite(traffic3[0], LOW );
+digitalWrite(traffic3[1],LOW);
+digitalWrite(traffic3[2],HIGH);
+   Serial.println("t3g");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+}
+
+for (int i = 0; i <= 150;i++){
+t3[0] = false;
+t3[1] = true;
+t3[2] = false;
+digitalWrite(traffic3[0], LOW );
+digitalWrite(traffic3[1],HIGH);
+digitalWrite(traffic3[2],LOW);
+  Serial.println("t3y");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+}
+
+
+t3[0] = true;
+t3[1] = false;
+t3[2] = false;
+digitalWrite(traffic3[0], HIGH );
+digitalWrite(traffic3[1],LOW);
+digitalWrite(traffic3[2],LOW);
+   Serial.println("t3r");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+
+
+for (int i = 0; i <= 250;i++){
+t4[0] = false;
+t4[1] = false;
+t4[2] = true;
+digitalWrite(traffic4[0], LOW );
+digitalWrite(traffic4[1],LOW);
+digitalWrite(traffic4[2],HIGH);
+  Serial.println("t4g");
+ if (Serial.read() == 'r')
+  {goto Thecode;}
+}
+
+ for (int i = 0; i <= 150;i++){
+
+t4[0] = false;
+t4[1] = true;
+t4[2] = false;
+digitalWrite(traffic4[0], LOW );
+digitalWrite(traffic4[1],HIGH);
+digitalWrite(traffic4[2],LOW);
+   Serial.println("t4y");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+}
+
+
+t4[0] = true;
+t4[1] = false;
+t4[2] = false;
+digitalWrite(traffic4[0], HIGH );
+digitalWrite(traffic4[1],LOW);
+digitalWrite(traffic4[2],LOW);
+   Serial.println("t4r");
+  if (Serial.read() == 'r')
+ {goto Thecode;}
+   if (true == false)
+  {Thecode: 
+  Serial.println("hello");
+  delay(1000);} 
+ }
+
+
+ 
+
