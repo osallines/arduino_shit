@@ -1,3 +1,6 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BlueTooth(1, 0); // (TXD, RXD) of HC-06
+char BT_input;
 int traffic1 [] = {2,3,4}; //red,yellow,green
 bool t1 [] = {true,false,false};
 // top right
@@ -17,6 +20,7 @@ void setup()
   digitalWrite(traffic3[0],HIGH);
   digitalWrite(traffic4[0],HIGH);
   Serial.begin(9600);
+  BlueTooth.begin(9600);  
 }
 void loop()
 {
@@ -30,7 +34,7 @@ digitalWrite(traffic1[0], LOW );
 digitalWrite(traffic1[1],LOW);
 digitalWrite(traffic1[2],HIGH);
     Serial.println("t1g");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
     {goto Thecode;}
   }
 
@@ -44,7 +48,7 @@ digitalWrite(traffic1[0], LOW );
 digitalWrite(traffic1[1],HIGH);
 digitalWrite(traffic1[2],LOW);
 Serial.println("t1y");
-    if (Serial.read() == 'r')
+    if (BlueTooth.available())
  {goto Thecode;}
  }
 
@@ -56,7 +60,7 @@ digitalWrite(traffic1[0], HIGH );
 digitalWrite(traffic1[1],LOW);
 digitalWrite(traffic1[2],LOW);
    Serial.println("t1r");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}}
 
  for (int i = 0; i <= 250;i++){
@@ -67,7 +71,7 @@ digitalWrite(traffic2[0], LOW );
 digitalWrite(traffic2[1],LOW);
 digitalWrite(traffic2[2],HIGH);
    Serial.println("t2g");
- if (Serial.read() == 'r')
+ if (BlueTooth.available())
  {goto Thecode;}
  }
 
@@ -79,7 +83,7 @@ digitalWrite(traffic2[0], LOW );
 digitalWrite(traffic2[1],HIGH);
 digitalWrite(traffic2[2],LOW);
    Serial.println("t2y");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}
 }
 
@@ -91,7 +95,7 @@ digitalWrite(traffic2[0], HIGH );
 digitalWrite(traffic2[1],LOW);
 digitalWrite(traffic2[2],LOW);
    Serial.println("t2r");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}
 
  for (int i = 0; i <= 250;i++){
@@ -102,7 +106,7 @@ digitalWrite(traffic3[0], LOW );
 digitalWrite(traffic3[1],LOW);
 digitalWrite(traffic3[2],HIGH);
    Serial.println("t3g");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}
 }
 
@@ -114,7 +118,7 @@ digitalWrite(traffic3[0], LOW );
 digitalWrite(traffic3[1],HIGH);
 digitalWrite(traffic3[2],LOW);
   Serial.println("t3y");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}
 }
 
@@ -126,7 +130,7 @@ digitalWrite(traffic3[0], HIGH );
 digitalWrite(traffic3[1],LOW);
 digitalWrite(traffic3[2],LOW);
    Serial.println("t3r");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}
 
 
@@ -138,7 +142,7 @@ digitalWrite(traffic4[0], LOW );
 digitalWrite(traffic4[1],LOW);
 digitalWrite(traffic4[2],HIGH);
   Serial.println("t4g");
- if (Serial.read() == 'r')
+ if (BlueTooth.available())
   {goto Thecode;}
 }
 
@@ -151,11 +155,26 @@ digitalWrite(traffic4[0], LOW );
 digitalWrite(traffic4[1],HIGH);
 digitalWrite(traffic4[2],LOW);
    Serial.println("t4y");
-  if (Serial.read() == 'r')
- {goto Thecode;}
+  if (BlueTooth.available())
+ {goto Thecode;
 }
 
+  
+    BT_input=(BlueTooth.read());
+    if (BT_input=='a')
+    {
+      digitalWrite(13, HIGH);
+      BlueTooth.println("Now LED is ON");
+      Serial.println("LED is ON") ;
+    }
+    else if (BT_input=='b')
+    {
+      digitalWrite(13, LOW);
+      BlueTooth.println("Now LED is OFF");
+      Serial.println("LED is Off") ;
 
+    }
+  
 t4[0] = true;
 t4[1] = false;
 t4[2] = false;
@@ -163,14 +182,11 @@ digitalWrite(traffic4[0], HIGH );
 digitalWrite(traffic4[1],LOW);
 digitalWrite(traffic4[2],LOW);
    Serial.println("t4r");
-  if (Serial.read() == 'r')
+  if (BlueTooth.available())
  {goto Thecode;}
    if (true == false)
   {Thecode: 
   Serial.println("hello");
   delay(1000);} 
  }
-
-
- 
-
+}
