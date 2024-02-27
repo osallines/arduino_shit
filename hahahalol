@@ -206,11 +206,9 @@ digitalWrite(E4[2],LOW);
   if (BlueTooth.available() || Serial.available()())
  {goto Thecode;
 }
- 
-}
-}
-   if (true == false)
+    if (true == false)
   {Thecode: 
   Serial.println("hello");
   delay(1000);} 
  }
+}
