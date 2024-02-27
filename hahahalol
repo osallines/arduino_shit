@@ -1,0 +1,211 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial BlueTooth(1, 0); // (TXD, RXD) of HC-06
+char BT_input;
+
+// D intersection:
+int D1 [] = {2,3,4}; //red,yellow,green
+bool D1_state [] = {true,false,false};
+int D2 [] = {5,6,7};
+bool D2_state [] = {true,false,false};
+int D3 [] = {8,9,10};
+bool D3_state [] = {true,false,false};
+//E intersection:
+int E4 [] = {11,12,13};
+bool E4_state [] = {true,false,false};
+bool emergency_state = false;
+int E5 [] = {14,15,16};
+bool E5_state [] = {true,false,false};
+bool emergency_state = false;
+//G intersection:
+int G6 [] = {17,18,19};
+bool G6_state [] = {true,false,false};
+bool emergency_state = false;
+int G7 [] = {20,21,22};
+bool G7_state [] = {true,false,false};
+bool emergency_state = false;
+int G8 [] = {23,24,25};
+bool G8_state [] = {true,false,false};
+bool emergency_state = false;
+// H
+int H9 [] = {26,27,28};
+bool H9_state [] = {true,false,false};
+bool emergency_state = false;
+int H10 [] = {29,30,31};
+bool H10_state [] = {true,false,false};
+bool emergency_state = false;
+int H11 [] = {32,33,34};
+bool H11_state [] = {true,false,false};
+bool emergency_state = false;
+// I intersection
+int I12 [] = {35,36,37};
+bool I12_state [] = {true,false,false};
+bool emergency_state = false;
+int I13 [] = {38,39,40};
+bool I13_state [] = {true,false,false};
+bool emergency_state = false;
+int I14 [] = {41,42,43};
+bool I14_state [] = {true,false,false};
+bool emergency_state = false;
+int I15 [] = {44,45,46};
+bool I15_state [] = {true,false,false};
+bool emergency_state = false;
+// J intersection
+int J16 [] = {47,48,49};
+bool J16_state [] = {true,false,false};
+bool emergency_state = false;
+int J17 [] = {50,51,52};
+bool J17_state [] = {true,false,false};
+bool emergency_state = false;
+int J18 [] = {53,54,55};
+bool J18_state [] = {true,false,false};
+bool emergency_state = false;
+
+
+void setup()
+{
+  digitalWrite(D1[0],HIGH);
+  digitalWrite(D2[0],HIGH);
+  digitalWrite(D3[0],HIGH);
+  digitalWrite(E4[0],HIGH);
+  Serial.begin(9600);
+  BlueTooth.begin(9600);  
+}
+void loop()
+{
+ 
+ {
+  for (int i = 0; i <= 250;i++){
+D1_state[0] = false;
+D1_state[1] = false;
+D1_state[2] = true;
+digitalWrite(D1[0], LOW );
+digitalWrite(D1[1],LOW);
+digitalWrite(D1[2],HIGH);
+    Serial.println("D1_stateg");
+  if (BlueTooth.available() || Serial.available()())
+    {goto Thecode;}
+  }
+
+//54 pin I need, 
+ for (int i = 0; i <= 150;i++){
+//
+D1_state[0] = false;
+D1_state[1] = true;
+D1_state[2] = false;
+digitalWrite(D1[0], LOW );
+digitalWrite(D1[1],HIGH);
+digitalWrite(D1[2],LOW);
+Serial.println("D1_statey");
+    if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+ }
+ //
+D1_state[0] = true;
+D1_state[1] = false;
+D1_state[2] = false;
+digitalWrite(D1[0], HIGH );
+digitalWrite(D1[1],LOW);
+digitalWrite(D1[2],LOW);
+   Serial.println("D1_stater");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}}
+//
+ for (int i = 0; i <= 250;i++){ 
+D2_state[0] = false;
+D2_state[1] = false;
+D2_state[2] = true;
+digitalWrite(D2[0], LOW );
+digitalWrite(D2[1],LOW);
+digitalWrite(D2[2],HIGH);
+   Serial.println("D2_stateg");
+ if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+ }
+
+ for (int i = 0; i <= 150;i++){
+D2_state[0] = false;
+D2_state[1] = true;
+D2_state[2] = false;
+digitalWrite(D2[0], LOW );
+digitalWrite(D2[1],HIGH);
+digitalWrite(D2[2],LOW);
+   Serial.println("D2_statey");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+}
+
+
+D2_state[0] = true;
+D2_state[1] = false;
+D2_state[2] = false;
+digitalWrite(D2[0], HIGH );
+digitalWrite(D2[1],LOW);
+digitalWrite(D2[2],LOW);
+   Serial.println("D2_stater");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+
+ for (int i = 0; i <= 250;i++){
+D3_state[0] = false;
+D3_state[1] = false;
+D3_state[2] = true;
+digitalWrite(D3[0], LOW );
+digitalWrite(D3[1],LOW);
+digitalWrite(D3[2],HIGH);
+   Serial.println("D3_stateg");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+}
+
+for (int i = 0; i <= 150;i++){
+D3_state[0] = false;
+D3_state[1] = true;
+D3_state[2] = false;
+digitalWrite(D3[0], LOW );
+digitalWrite(D3[1],HIGH);
+digitalWrite(D3[2],LOW);
+  Serial.println("D3_statey");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+}
+
+
+D3_state[0] = true;
+D3_state[1] = false;
+D3_state[2] = false;
+digitalWrite(D3[0], HIGH );
+digitalWrite(D3[1],LOW);
+digitalWrite(D3[2],LOW);
+   Serial.println("D3_stater");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;}
+
+
+for (int i = 0; i <= 250;i++){
+E4_state[0] = false;
+E4_state[1] = false;
+E4_state[2] = true;
+digitalWrite(E4[0], LOW );
+digitalWrite(E4[1],LOW);
+digitalWrite(E4[2],HIGH);
+  Serial.println("E4_stateg");
+ if (BlueTooth.available() || Serial.available()())
+  {goto Thecode;}
+}
+
+ for (int i = 0; i <= 150;i++){
+
+E4_state[0] = false;
+E4_state[1] = true;
+E4_state[2] = false;
+digitalWrite(E4[0], LOW );
+digitalWrite(E4[1],HIGH);
+digitalWrite(E4[2],LOW);
+   Serial.println("E4_statey");
+  if (BlueTooth.available() || Serial.available()())
+ {goto Thecode;
+}
+ 
+}
+}
